@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2013 eXo Platform SAS.
+    
+    This is free software; you can redistribute it and/or modify it
+    under the terms of the GNU Lesser General Public License as
+    published by the Free Software Foundation; either version 2.1 of
+    the License, or (at your option) any later version.
+    
+    This software is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+    
+    You should have received a copy of the GNU Lesser General Public
+    License along with this software; if not, write to the Free
+    Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+    02110-1301 USA, or see the FSF site: http://www.fsf.org.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.exoplatform.addons</groupId>
+    <artifactId>addons-parent-pom</artifactId>
+    <version>1</version>
+  </parent>
+
+  <artifactId>exo-wiki-recently-updated-macro</artifactId>
+  <version>1.0</version>
+  <packaging>pom</packaging>
+  <name>eXo Wiki Recently Updated Macro</name>
+  <description>eXo Wiki Recently Updated Macro</description>
+
+  <scm>
+    <connection>https://github.com/exo-addons/recentupdate-wiki-macro/</connection>
+    <developerConnection>https://github.com/exo-addons/recentupdate-wiki-macro/</developerConnection>
+    <url>https://github.com/exo-addons/recentupdate-wiki-macro/</url>
+  </scm>
+
+  <properties>
+    <!-- Defaut compiler settings -->
+    <maven.compiler.optimize>true</maven.compiler.optimize>
+    <maven.compiler.source>1.6</maven.compiler.source>
+    <maven.compiler.target>1.6</maven.compiler.target>
+
+    <!-- eXo Modules -->
+    <org.exoplatform.kernel.version>2.4.4-GA</org.exoplatform.kernel.version>
+    <org.exoplatform.core.version>2.5.4-GA</org.exoplatform.core.version>
+    <org.exoplatform.ws.version>2.3.4-GA</org.exoplatform.ws.version>
+    <org.exoplatform.jcr.version>1.15.4-GA</org.exoplatform.jcr.version>
+    <org.exoplatform.jcr-services.version>1.15.4-GA</org.exoplatform.jcr-services.version>
+    <org.gatein.portal.version>3.5.4.Final</org.gatein.portal.version>
+    <org.exoplatform.commons.version>4.0.1</org.exoplatform.commons.version>
+    <org.exoplatform.commons.lang.version>2.6</org.exoplatform.commons.lang.version>
+    <org.exoplatform.wiki.version>4.1.x-wiki-stabilization-SNAPSHOT</org.exoplatform.wiki.version>
+    
+    <!--Third party -->
+    <org.xwiki.version>5.0.2</org.xwiki.version>
+    <junit.version>4.11</junit.version>
+  </properties>
+
+  <prerequisites>
+    <maven>3.0.4</maven>
+  </prerequisites>
+
+  <dependencyManagement>
+  <dependencies>
+    <!--This dependency is used for main classes compilation but is erroneously reported as useless by mvn dependency:analyze-->
+    <dependency>
+	<groupId>org.exoplatform.wiki</groupId>
+	<artifactId>wiki-service</artifactId>
+        <version>${org.exoplatform.wiki.version}</version>	
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>${org.exoplatform.commons.lang.version}</version>	
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.commons</groupId>
+      <artifactId>xwiki-commons-component-api</artifactId>
+      <version>${org.xwiki.version}</version>	
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.commons</groupId>
+      <artifactId>xwiki-commons-properties</artifactId>
+      <version>${org.xwiki.version}</version>	
+      <exclusions>
+        <exclusion>
+          <artifactId>commons-logging</artifactId>
+          <groupId>commons-logging</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.rendering</groupId>
+      <artifactId>xwiki-rendering-api</artifactId>
+      <version>${org.xwiki.version}</version>	
+      <exclusions>
+        <exclusion>
+          <artifactId>ant</artifactId>
+          <groupId>org.apache.ant</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>dom4j</artifactId>
+          <groupId>dom4j</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>xercesImpl</artifactId>
+          <groupId>xerces</groupId>
+        </exclusion>
+        <exclusion>
+          <artifactId>jdom</artifactId>
+          <groupId>org.jdom</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.rendering</groupId>
+      <artifactId>xwiki-rendering-transformation-macro</artifactId>
+      <version>${org.xwiki.version}</version>	
+    </dependency>
+    <!-- Testing dependencies -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.xwiki.rendering</groupId>
+      <artifactId>xwiki-rendering-test</artifactId>
+      <version>${org.xwiki.version}</version>	
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+</dependencyManagement>
+
+  <modules>
+    <module>recently-updated-macro</module>
+  </modules>
+</project>
